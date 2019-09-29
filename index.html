@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>War</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/cyborg/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row m-4">
+            <div class="col text-center"><h1 class="text-danger">Player 1</h1></div>
+            <div class="col text-center"><h1 class="text-danger">Player 2</h1></div>
+        </div>
+        <div class="row m-4">
+            <div class="col text-center"><button class="btn btn-outline-danger btn-lg" onclick="randomCard1()">Player 1 Attack!</button></div>
+            <div class="col text-center"><button class="btn btn-outline-danger btn-lg" onclick="randomCard2()">Player 2 Attack!</button></div>
+        </div>
+        <div class="row m-4 cardsRendered">
+            <div class="col"><div class="playCard" id="player1"></div></div>
+            <div class="col"><div class="playCard" id="player2"></div></div>
+        </div>
+        <div class="row m-2">
+            <div class="col mx-auto text-center"><h1 class="" id="winner"></h1></div>
+        </div>
+            <div class="row">
+            <div class="col mx-auto text-center" id="reset"></div>
+        </div>
+    </div>
+    
+    <script>
+
+        let player1 = 0;
+        let player2 = 0;
+        
+    let cards = [1,2,3,4,5,6,7,8,9,10,11,12,13];
+    let suit = ["hearts", "clubs", "diamonds", "spades"];
+    let cardColors = ["red", "black"];
+
+function randomCard1() {
+
+    let rando = cards[Math.floor(Math.random() * cards.length)];
+    player1 = rando;
+    if (rando == 1) {
+        rando = "A";
+    } else if (rando == 11) {
+        rando = "J";
+    } else if (rando == 12) {
+        rando = "Q";
+    } else if (rando == 13) {
+        rando = "K";
+    }
+    
+    let randomSuit = Math.floor (Math.random() * suit.length);
+    if (randomSuit == 0) {
+        randomSuit = "fa-heart"
+    } else if (randomSuit == 1) {
+        randomSuit = "fa-times"
+    } else if (randomSuit == 2) {
+        randomSuit = "fa-diamond"
+    } else if (randomSuit == 3) {
+        randomSuit = "fa-square"
+    }
+
+    console.log(randomSuit);
+
+    let randomColor = cardColors[Math.floor(Math.random() * cardColors.length)];
+    
+    
+    document.querySelector("#player1").style.color = randomColor;
+    
+        if (randomColor == "red") {
+            document.querySelector('#player1').style.backgroundColor = "#000000";
+        } else {
+            document.querySelector('#player1').style.backgroundColor = "#ff0000";
+        }
+        
+    
+    document.querySelector('#player1').innerHTML = `<i class="fa ${randomSuit} fa-5x" aria-hidden="true"></i> <p class="cardValue">${rando}</p> <i class="fa ${randomSuit} fa-5x align-text-bottom suitRotate" aria-hidden="true"></i>`;
+    
+    checkWinner();
+}
+
+function randomCard2() {
+    
+    let rando = cards[Math.floor(Math.random() * cards.length)];
+    player2 = rando;
+    if (rando == 1) {
+        rando = "A";
+    } else if (rando == 11) {
+        rando = "J";
+    } else if (rando == 12) {
+        rando = "Q";
+    } else if (rando == 13) {
+        rando = "K";
+    }
+    
+    let randomSuit = Math.floor (Math.random() * suit.length);
+    if (randomSuit == 0) {
+        randomSuit = "fa-heart"
+    } else if (randomSuit == 1) {
+        randomSuit = "fa-times"
+    } else if (randomSuit == 2) {
+        randomSuit = "fa-diamond"
+    } else if (randomSuit == 3) {
+        randomSuit = "fa-square"
+    }
+    
+    console.log(randomSuit);
+    
+    let randomColor = cardColors[Math.floor(Math.random() * cardColors.length)];
+    
+    
+    document.querySelector("#player2").style.color = randomColor;
+
+    if (randomColor == "red") {
+        document.querySelector('#player2').style.backgroundColor = "#000000";
+    } else {
+        document.querySelector('#player2').style.backgroundColor = "#ff0000";
+    }
+    
+    document.querySelector('#player2').innerHTML = `<i class="fa ${randomSuit} fa-5x" aria-hidden="true"></i> <p class="cardValue">${rando}</p> <i class="fa ${randomSuit} fa-5x align-text-bottom suitRotate" aria-hidden="true"></i>`;
+    checkWinner();
+}
+
+function checkWinner() {
+    
+    let resetButton = `<button class="btn-danger btn-lg" onclick="reset()">Reset</button>`
+    
+    if (player1 > 0 && player2 > 0) {
+        
+        
+        let winningPlayer;
+        
+        if (player1 > player2  ) {
+            
+            document.querySelector('#winner').innerHTML = `Player 1 Won!`
+            document.querySelector('#reset').innerHTML = resetButton
+        } else {
+            document.querySelector('#winner').innerHTML = `Player 2 Won!`
+            document.querySelector('#reset').innerHTML = resetButton
+            
+        }
+    }
+    
+}
+
+function reset() {
+    player1 = 0;
+    player2 = 0;
+    document.querySelector('#player1').innerHTML = ``;
+    document.querySelector('#player2').innerHTML = ``;
+    document.querySelector('#winner').innerHTML = ``
+    document.querySelector('#reset').innerHTML = ``
+    document.querySelector('#player1').style.backgroundColor = "";
+    document.querySelector('#player2').style.backgroundColor = "";
+    
+}
+
+</script>
+</body>
+</html>

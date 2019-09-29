@@ -1,0 +1,30 @@
+body {
+    background-image: url(http://vignette1.wikia.nocookie.net/rainbowsix/images/9/9a/Black_camo.jpg/revision/latest/scale-to-width-down/2000?cb=20160516113035);
+}
+
+.playCard {
+    background-color: rgba(0, 0, 0, 0.666);
+    width: 50%;
+    height: 400px;
+    margin: auto;
+    padding: 25px;
+    border: solid 2px red;
+}
+
+.suitRotate {
+    margin-top: 220px;
+    transform: rotate(180deg);
+    margin-left: 75%;
+}
+
+.cardValue {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 35px;
+}
+
+.btn-outline-danger {
+    background-color: #00000066;
+}
