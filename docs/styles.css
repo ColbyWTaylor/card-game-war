@@ -1,0 +1,30 @@
+body {
+    background-image: url("/camo-bg.webp");
+}
+
+.playCard {
+    background-color: rgba(0, 0, 0, 0.666);
+    width: 50%;
+    height: 400px;
+    margin: auto;
+    padding: 25px;
+    border: solid 2px red;
+}
+
+.suitRotate {
+    margin-top: 220px;
+    transform: rotate(180deg);
+    margin-left: 75%;
+}
+
+.cardValue {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 35px;
+}
+
+.btn-outline-danger {
+    background-color: #00000066;
+}
