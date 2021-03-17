@@ -64,28 +64,19 @@ rando = "K";
 }
 
 let randomSuit = Math.floor (Math.random() * suit.length);
-if (randomSuit == 0) {
-randomSuit = "fa-heart"
-} else if (randomSuit == 1) {
-randomSuit = "fa-times"
-} else if (randomSuit == 2) {
-randomSuit = "fa-diamond"
-} else if (randomSuit == 3) {
-randomSuit = "fa-square"
-}
-
-console.log(randomSuit);
+randomSuit == 0 ? randomSuit = "fa-heart" : randomSuit == 1 ? 
+randomSuit = "fa-times" : randomSuit == 2 ? 
+randomSuit = "fa-diamond" : randomSuit == 3 ? 
+randomSuit = "fa-square" : console.log(randomSuit);
 
 let randomColor = cardColors[Math.floor(Math.random() * cardColors.length)];
 
 
 document.querySelector("#player2").style.color = randomColor;
 
-if (randomColor == "red") {
-document.querySelector('#player2').style.backgroundColor = "#000000";
-} else {
-document.querySelector('#player2').style.backgroundColor = "#ff0000";
-}
+randomColor == "red" ? 
+document.querySelector('#player2').style.backgroundColor = "#000000" : 
+document.querySelector('#player2').style.backgroundColor = "#ff0000"
 
 document.querySelector('#player2').innerHTML = `<i class="fa ${randomSuit} fa-5x" aria-hidden="true"></i> <p class="cardValue">${rando}</p> <i class="fa ${randomSuit} fa-5x align-text-bottom suitRotate" aria-hidden="true"></i>`;
 checkWinner();
@@ -101,13 +92,11 @@ if (player1 > 0 && player2 > 0) {
 let winningPlayer;
 
 if (player1 > player2  ) {
-    
     document.querySelector('#winner').innerHTML = `P2 lost :(`
     document.querySelector('#reset').innerHTML = resetButton
 } else {
     document.querySelector('#winner').innerHTML = `P2 Won!`
-    document.querySelector('#reset').innerHTML = resetButton
-    
+    document.querySelector('#reset').innerHTML = resetButton 
 }
 }
 
@@ -122,5 +111,4 @@ document.querySelector('#winner').innerHTML = ``
 document.querySelector('#reset').innerHTML = ``
 document.querySelector('#player1').style.backgroundColor = "";
 document.querySelector('#player2').style.backgroundColor = "";
-
 }
